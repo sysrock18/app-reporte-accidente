@@ -1,14 +1,45 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Ionic Blank
+      Reporte Accidente
     </ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-end color="royal" (click)="logout()">
+        Salir
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-card>
+        <ion-item>
+            <ion-icon name="contact" item-start></ion-icon>
+            <h2>{{ userData.name }}</h2>
+        </ion-item>
+    </ion-card>
+    <ion-list>
+        <ion-item>
+            <ion-label>Tipo de Accidente</ion-label>
+            <ion-select [(ngModel)]="formData.accidentType">
+                <ion-option *ngFor="let type of accidentTypes" value="{{type.id}}">{{type.name}}</ion-option>
+            </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Observaciones</ion-label>
+          <ion-textarea [(ngModel)]="formData.comments" rows="5"></ion-textarea>
+      </ion-item>
+    </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-end color="royal" (click)="registerAccident()">
+        Enviar
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

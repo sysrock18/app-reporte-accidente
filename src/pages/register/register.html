@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Reporte Accidente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding color="base">
+
+  <form (ngSubmit)="registerUser()">
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="formData.name" name="name" clearInput="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="formData.email" name="email" clearInput="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="formData.password" name="password" clearInput="true"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit" margin-top>Registrarme</button>
+    <button ion-button block type="button" outline (click)="goToLogin()">Ingresar con mi cuenta</button>
+  </form>
+
+</ion-content>

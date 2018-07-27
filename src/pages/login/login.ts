@@ -3,10 +3,14 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  LoadingController
+  LoadingController,
+  ToastController
 } from 'ionic-angular'
 import { HomePage } from '../home/home'
-import api from '../../api'
+import { RegisterPage } from '../register/register'
+import { ApiProvider } from '../../providers/api/api'
+import { ToastProvider } from '../../providers/toast/toast'
+import { Storage } from '@ionic/storage'
 
 @IonicPage()
 @Component({
@@ -22,29 +26,54 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public api: ApiProvider,
+    public toastCtrl: ToastController,
+    public toastProvider: ToastProvider,
+    public storage: Storage
   ) {
-    console.log('hola')
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage')
+  async ionViewDidLoad() {
+    const user_id = await this.storage.get('id')
+    if (user_id) {
+      this.navCtrl.setRoot(HomePage, {}, { animate: true })
+    }
   }
 
   async login() {
-    let loader = this.loadingCtrl.create()
+    const loader = this.loadingCtrl.create({ content: 'Espere...' })
     loader.present()
 
-    let data = await api.user.login({email: this.formData.email, password: this.formData.pass})
-
-    console.log(data)
+    const { data: resp } = await this.api.login({email: this.formData.email, password: this.formData.pass})
 
     loader.dismiss()
-    // this.navCtrl.setRoot(HomePage, {}, { animate: true })
+
+    console.log(resp)
+
+    if (resp.result === 'success') {
+      this.toastProvider.presentToast('Autenticación exitosa')
+
+      const { record, credentials } = resp
+      await this.storage.ready()
+      this.storage.set('name', record.name)
+      this.storage.set('email', record.email)
+      this.storage.set('id', record.id)
+      this.storage.set('http_user', credentials.user)
+      this.storage.set('http_pass', credentials.pass)
+
+      this.navCtrl.setRoot(HomePage, {}, { animate: true })
+
+    } else if (resp.result === 'error') {
+      this.toastProvider.presentToast('Usuario o contraseña incorrectos')
+    } else {
+      this.toastProvider.presentToast('Servicio temporalmente no disponible')
+    }
   }
 
   goToRegister() {
-    
+    this.navCtrl.push(RegisterPage)
   }
 
 }
