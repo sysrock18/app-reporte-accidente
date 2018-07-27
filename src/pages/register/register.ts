@@ -7,7 +7,6 @@ import {
 } from 'ionic-angular'
 import { ToastProvider } from '../../providers/toast/toast'
 import { ApiProvider } from '../../providers/api/api'
-import { LoginPage } from '../login/login'
 
 @IonicPage()
 @Component({
@@ -53,6 +52,8 @@ export class RegisterPage {
     if (resp.result === 'success') {
       this.toastProvider.presentToast('Registro completado')
       this.navCtrl.pop();
+    } else if (resp.result === 'invalid') {
+      this.toastProvider.presentToast('Faltan datos por completar')
     } else {
       this.toastProvider.presentToast('Ha ocurrido un error al realizar el registro')
     }

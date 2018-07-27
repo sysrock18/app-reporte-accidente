@@ -60,8 +60,6 @@ export class ApiProvider {
         }
       })
 
-      console.log(resp)
-
       return resp
 
     } catch(err) {

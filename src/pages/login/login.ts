@@ -50,8 +50,6 @@ export class LoginPage {
 
     loader.dismiss()
 
-    console.log(resp)
-
     if (resp.result === 'success') {
       this.toastProvider.presentToast('Autenticación exitosa')
 
@@ -67,6 +65,8 @@ export class LoginPage {
 
     } else if (resp.result === 'error') {
       this.toastProvider.presentToast('Usuario o contraseña incorrectos')
+    } else if (resp.result === 'invalid') {
+      this.toastProvider.presentToast('Faltan datos por completar')
     } else {
       this.toastProvider.presentToast('Servicio temporalmente no disponible')
     }

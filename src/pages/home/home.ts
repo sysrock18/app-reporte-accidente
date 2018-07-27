@@ -85,6 +85,8 @@ export class HomePage {
       this.formData.accidentType = ''
       this.formData.comments = ''
       this.toastProvider.presentToast('Accidente reportado con exito')
+    } else if (resp.result === 'invalid') {
+      this.toastProvider.presentToast('Faltan datos por completar')
     } else {
       this.toastProvider.presentToast('Ha ocurrido un error al reportar el accidente')
     }
