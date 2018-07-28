@@ -9,22 +9,19 @@ Algunas capturas
 
 ### Login
 
-![Login](screenshots/login.png?raw=true | width=250)
-
+<img src="screenshots/login.png" width="300">
 
 ### Inicio
 
-![Main](screenshots/home.png?raw=true "Main" | width=250)
-
+<img src="screenshots/home.png" width="300">
 
 ### Registro
 
-![Tipos](screenshots/registro.png?raw=true "Tipos" | width=250)
+<img src="screenshots/registro.png" width="300">
 
 ### Tipo de accidente
 
-![Tipos](screenshots/tipo-accidente.png?raw=true "Tipos" | width=250)
-
+<img src="screenshots/tipo-accidente.png" width="300">
 
 ************************************
 Tecnologías y Herramientas empleadas
