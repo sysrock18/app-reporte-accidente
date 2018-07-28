@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise'
 @Injectable()
 export class ApiProvider {
 
-  endpoint = 'http://localhost:8080/reporte-accidente-admin/api'
+  endpoint = 'https://reporte-accidente.herokuapp.com/api'
 
   constructor() {
     
