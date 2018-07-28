@@ -9,21 +9,21 @@ Algunas capturas
 
 ### Login
 
-![Login](screenshots/login.png?raw=true "Login"){ width=250px }
+![Login](screenshots/login.png?raw=true | width=250)
 
 
 ### Inicio
 
-![Main](screenshots/home.png?raw=true "Main"){ width=250px }
+![Main](screenshots/home.png?raw=true "Main" | width=250)
 
 
 ### Registro
 
-![Tipos](screenshots/registro.png?raw=true "Tipos"){ width=250px }
+![Tipos](screenshots/registro.png?raw=true "Tipos" | width=250)
 
 ### Tipo de accidente
 
-![Tipos](screenshots/tipo-accidente.png?raw=true "Tipos"){ width=250px }
+![Tipos](screenshots/tipo-accidente.png?raw=true "Tipos" | width=250)
 
 
 ************************************
